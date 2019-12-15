@@ -24,7 +24,7 @@ var express = require('express'),
       });
       res.send('' + sum);
     } else if(query == 'Source code for this exercise?'){
-      res.send('')
+      res.send('https://github.com/ChristopherMCarlson/coding-exercise'); 
     }else if(!query.includes('?') && !query.includes("<")){
       //GET THE FIRST NUMBER(THE NUMBER OF WORDS IN THE QUERY)
       let queryLength = query.split(' ').length;
