@@ -41,6 +41,24 @@ var express = require('express'),
         }
       });
       res.send(queryLength + '-' + consonants + '-' + vowels)
+    } else if(query.startsWith('<')){
+      let returnString = ''
+      //CREATE AN ARRAY OF ALL EVEN NUMBERS FROM LARGEST TO SMALLEST
+      let evenArr = query.split(' ').filter(function(value, index, arr){
+        return value % 2 == 0;
+    }).sort(function(a, b){return b-a})
+    //CREATE AN ARRAY OF ALL ODD NUMBERS FROM SMALLEST TO LARGEST
+      let oddArr = query.split(' ').filter(function(value, index, arr){
+        return value % 2 != 0 && value % 1 == 0;
+    }).sort(function(a, b){return a-b})
+    for (let i = 0; i < oddArr.length; i++) {
+      //ADD THE TWO ARRAYS IN THE SAME INDEX
+      returnString += Number(oddArr[i]) + Number(evenArr[i])
+      //CONCATNATE A SPACE
+      returnString += ' '
+    }
+    //RETURN A STRING OF ALL THE SUMS WITH THE FINAL SPACE REMOVED
+    res.send(returnString.replace(/\s+$/, ''))
     } else {
       res.send('Error');
     }
