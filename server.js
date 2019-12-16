@@ -59,7 +59,9 @@ var express = require('express'),
     }
     //RETURN A STRING OF ALL THE SUMS WITH THE FINAL SPACE REMOVED
     res.send(returnString.replace(/\s+$/, ''))
-    } else {
+    } else if(query.startsWith(' ABC')){
+      res.send('Some kind of codebreaker test?')
+    }else {
       res.send('Error');
     }
   })
